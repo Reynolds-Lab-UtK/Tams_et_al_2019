@@ -1,0 +1,681 @@
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FASTQC (0.11.5):
+
+bash fastqc.sh
+
+#Run_1_Raw_Data
+#Performs FastQC on all files in a folder
+#bash fastqc.sh
+#make sure fastqc.sh is inside folder with files of interest
+#change the output folder as necessary (After the -o flag)
+
+module load fastqc
+for filename in *.fastq
+do
+fastqc -t 2 -o ../analysis/1_fastqc/ $filename
+done
+#scp to Desktop for Analysis
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TRIMMOMATIC (0.36) (Multiple parameters were used but I'm only logging the final version here with Leading/Trailing=30 and Slidingwindow= 4:15)
+
+bash trimmomatic_4_15_window.sh
+
+#Trims all raw reads in a folder
+#Make sure to change the output folder
+
+module load trimmomatic
+
+java -jar /lustre/haven/courses/EPP622-2018Fa/software/Trimmomatic-0.38/trimmomatic-0.38.jar PE \
+104a_S5_L001_R1_001.fastq  \
+104a_S5_L001_R2_001.fastq  \
+../3_trim_output/104a_R1.trimmed.paired.fastq \
+../3_trim_output/104a_R1.trimmed.unpaired.fastq \
+../3_trim_output/104a_R2.trimmed.paired.fastq \
+../3_trim_output/104a_R2.trimmed.unpaired.fastq \
+ILLUMINACLIP:/lustre/haven/courses/EPP622-2018Fa/software/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 \
+LEADING:30 TRAILING:30 SLIDINGWINDOW:4:15 MINLEN:36
+
+java -jar /lustre/haven/courses/EPP622-2018Fa/software/Trimmomatic-0.38/trimmomatic-0.38.jar PE \
+104b_S6_L001_R1_001.fastq  \
+104b_S6_L001_R2_001.fastq  \
+../3_trim_output/104b_R1.trimmed.paired.fastq \
+../3_trim_output/104b_R1.trimmed.unpaired.fastq \
+../3_trim_output/104b_R2.trimmed.paired.fastq \
+../3_trim_output/104b_R2.trimmed.unpaired.fastq \
+ILLUMINACLIP:/lustre/haven/courses/EPP622-2018Fa/software/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 \
+LEADING:30 TRAILING:30 SLIDINGWINDOW:4:15 MINLEN:36
+
+java -jar /lustre/haven/courses/EPP622-2018Fa/software/Trimmomatic-0.38/trimmomatic-0.38.jar PE \
+57a_S1_L001_R1_001.fastq  \
+57a_S1_L001_R2_001.fastq  \
+../3_trim_output/57a_R1.trimmed.paired.fastq \
+../3_trim_output/57a_R1.trimmed.unpaired.fastq \
+../3_trim_output/57a_R2.trimmed.paired.fastq \
+../3_trim_output/57a_R2.trimmed.unpaired.fastq \
+ILLUMINACLIP:/lustre/haven/courses/EPP622-2018Fa/software/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 \
+LEADING:30 TRAILING:30 SLIDINGWINDOW:4:15 MINLEN:36
+
+java -jar /lustre/haven/courses/EPP622-2018Fa/software/Trimmomatic-0.38/trimmomatic-0.38.jar PE \
+57b_S2_L001_R1_001.fastq  \
+57b_S2_L001_R2_001.fastq  \
+../3_trim_output/57b_R1.trimmed.paired.fastq \
+../3_trim_output/57b_R1.trimmed.unpaired.fastq \
+../3_trim_output/57b_R2.trimmed.paired.fastq \
+../3_trim_output/57b_R2.trimmed.unpaired.fastq \
+ILLUMINACLIP:/lustre/haven/courses/EPP622-2018Fa/software/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 \
+LEADING:30 TRAILING:30 SLIDINGWINDOW:4:15 MINLEN:36
+
+java -jar /lustre/haven/courses/EPP622-2018Fa/software/Trimmomatic-0.38/trimmomatic-0.38.jar PE \
+62a_S7_L001_R1_001.fastq  \
+62a_S7_L001_R2_001.fastq  \
+../3_trim_output/62a_R1.trimmed.paired.fastq \
+../3_trim_output/62a_R1.trimmed.unpaired.fastq \
+../3_trim_output/62a_R2.trimmed.paired.fastq \
+../3_trim_output/62a_R2.trimmed.unpaired.fastq \
+
+java -jar /lustre/haven/courses/EPP622-2018Fa/software/Trimmomatic-0.38/trimmomatic-0.38.jar PE \
+62b_S8_L001_R1_001.fastq  \
+62b_S8_L001_R2_001.fastq  \
+../3_trim_output/62b_R1.trimmed.paired.fastq \
+../3_trim_output/62b_R1.trimmed.unpaired.fastq \
+../3_trim_output/62b_R2.trimmed.paired.fastq \
+../3_trim_output/62b_R2.trimmed.unpaired.fastq \
+ILLUMINACLIP:/lustre/haven/courses/EPP622-2018Fa/software/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 \
+LEADING:30 TRAILING:30 SLIDINGWINDOW:4:15 MINLEN:36
+
+java -jar /lustre/haven/courses/EPP622-2018Fa/software/Trimmomatic-0.38/trimmomatic-0.38.jar PE \
+88a_S3_L001_R1_001.fastq  \
+88a_S3_L001_R2_001.fastq  \
+../3_trim_output/88a_R1.trimmed.paired.fastq \
+../3_trim_output/88a_R1.trimmed.unpaired.fastq \
+../3_trim_output/88a_R2.trimmed.paired.fastq \
+../3_trim_output/88a_R2.trimmed.unpaired.fastq \
+ILLUMINACLIP:/lustre/haven/courses/EPP622-2018Fa/software/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 \
+LEADING:30 TRAILING:30 SLIDINGWINDOW:4:15 MINLEN:36
+
+java -jar /lustre/haven/courses/EPP622-2018Fa/software/Trimmomatic-0.38/trimmomatic-0.38.jar PE \
+88b_S4_L001_R1_001.fastq  \
+88b_S4_L001_R2_001.fastq  \
+../3_trim_output/88b_R1.trimmed.paired.fastq \
+../3_trim_output/88b_R1.trimmed.unpaired.fastq \
+../3_trim_output/88b_R2.trimmed.paired.fastq \
+../3_trim_output/88b_R2.trimmed.unpaired.fastq \
+ILLUMINACLIP:/lustre/haven/courses/EPP622-2018Fa/software/Trimmomatic-0.38/adapters/TruSeq3-PE.fa:2:30:10 \
+LEADING:30 TRAILING:30 SLIDINGWINDOW:4:15 MINLEN:36
+
+
+[rtams@acf-bc008 2_trimmomatic]$ bash trimmomatic.sh
+TrimmomaticPE: Started with arguments:
+ 104a_S5_L001_R1_001.fastq 104a_S5_L001_R2_001.fastq ../3_trim_output/104a_R1.trimmed.paired.fastq ../3_trim_output/104a_R1.trimmed.unpaired.fastq ../3_trim_output/104a_R2.trimmed.paired.fastq ../3_trim_output/104a_R2.trimmed.unpaire$
+Using PrefixPair: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT' and 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+ILLUMINACLIP: Using 1 prefix pairs, 0 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 2446708 Both Surviving: 2399799 (98.08%) Forward Only Surviving: 46021 (1.88%) Reverse Only Surviving: 727 (0.03%) Dropped: 161 (0.01%)
+TrimmomaticPE: Completed successfully
+TrimmomaticPE: Started with arguments:
+ 104b_S6_L001_R1_001.fastq 104b_S6_L001_R2_001.fastq ../3_trim_output/104b_R1.trimmed.paired.fastq ../3_trim_output/104b_R1.trimmed.unpaired.fastq ../3_trim_output/104b_R2.trimmed.paired.fastq ../3_trim_output/104b_R2.trimmed.unpaire$
+Using PrefixPair: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT' and 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+ILLUMINACLIP: Using 1 prefix pairs, 0 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 3152044 Both Surviving: 3102807 (98.44%) Forward Only Surviving: 48169 (1.53%) Reverse Only Surviving: 884 (0.03%) Dropped: 184 (0.01%)
+TrimmomaticPE: Completed successfully
+TrimmomaticPE: Started with arguments:
+ 57a_S1_L001_R1_001.fastq 57a_S1_L001_R2_001.fastq ../3_trim_output/57a_R1.trimmed.paired.fastq ../3_trim_output/57a_R1.trimmed.unpaired.fastq ../3_trim_output/57a_R2.trimmed.paired.fastq ../3_trim_output/57a_R2.trimmed.unpaired.fast$
+Using PrefixPair: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT' and 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+ILLUMINACLIP: Using 1 prefix pairs, 0 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 1784828 Both Surviving: 1740061 (97.49%) Forward Only Surviving: 44000 (2.47%) Reverse Only Surviving: 560 (0.03%) Dropped: 207 (0.01%)
+TrimmomaticPE: Completed successfully
+TrimmomaticPE: Started with arguments:
+ 57b_S2_L001_R1_001.fastq 57b_S2_L001_R2_001.fastq ../3_trim_output/57b_R1.trimmed.paired.fastq ../3_trim_output/57b_R1.trimmed.unpaired.fastq ../3_trim_output/57b_R2.trimmed.paired.fastq ../3_trim_output/57b_R2.trimmed.unpaired.fast$
+Using PrefixPair: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT' and 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+ILLUMINACLIP: Using 1 prefix pairs, 0 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 1538162 Both Surviving: 1512705 (98.34%) Forward Only Surviving: 24958 (1.62%) Reverse Only Surviving: 413 (0.03%) Dropped: 86 (0.01%)
+TrimmomaticPE: Completed successfully
+TrimmomaticPE: Started with arguments:
+ 62a_S7_L001_R1_001.fastq 62a_S7_L001_R2_001.fastq ../3_trim_output/62a_R1.trimmed.paired.fastq ../3_trim_output/62a_R1.trimmed.unpaired.fastq ../3_trim_output/62a_R2.trimmed.paired.fastq ../3_trim_output/62a_R2.trimmed.unpaired.fast$
+Using PrefixPair: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT' and 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+ILLUMINACLIP: Using 1 prefix pairs, 0 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 2460251 Both Surviving: 2420182 (98.37%) Forward Only Surviving: 39256 (1.60%) Reverse Only Surviving: 682 (0.03%) Dropped: 131 (0.01%)
+TrimmomaticPE: Completed successfully
+TrimmomaticPE: Started with arguments:
+ 62b_S8_L001_R1_001.fastq 62b_S8_L001_R2_001.fastq ../3_trim_output/62b_R1.trimmed.paired.fastq ../3_trim_output/62b_R1.trimmed.unpaired.fastq ../3_trim_output/62b_R2.trimmed.paired.fastq ../3_trim_output/62b_R2.trimmed.unpaired.fast$
+Using PrefixPair: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT' and 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+ILLUMINACLIP: Using 1 prefix pairs, 0 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 2805149 Both Surviving: 2754424 (98.19%) Forward Only Surviving: 49807 (1.78%) Reverse Only Surviving: 747 (0.03%) Dropped: 171 (0.01%)
+TrimmomaticPE: Completed successfully
+TrimmomaticPE: Started with arguments:
+ 88a_S3_L001_R1_001.fastq 88a_S3_L001_R2_001.fastq ../3_trim_output/88a_R1.trimmed.paired.fastq ../3_trim_output/88a_R1.trimmed.unpaired.fastq ../3_trim_output/88a_R2.trimmed.paired.fastq ../3_trim_output/88a_R2.trimmed.unpaired.fast$
+Using PrefixPair: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT' and 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+ILLUMINACLIP: Using 1 prefix pairs, 0 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 2608218 Both Surviving: 2478749 (95.04%) Forward Only Surviving: 128428 (4.92%) Reverse Only Surviving: 815 (0.03%) Dropped: 226 (0.01%)
+TrimmomaticPE: Completed successfully
+TrimmomaticPE: Started with arguments:
+ 88b_S4_L001_R1_001.fastq 88b_S4_L001_R2_001.fastq ../3_trim_output/88b_R1.trimmed.paired.fastq ../3_trim_output/88b_R1.trimmed.unpaired.fastq ../3_trim_output/88b_R2.trimmed.paired.fastq ../3_trim_output/88b_R2.trimmed.unpaired.fast$
+Using PrefixPair: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT' and 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+ILLUMINACLIP: Using 1 prefix pairs, 0 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences         
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FASTQC_AFTER_TRIM (0.11.5)
+
+bash fastqc.sh
+
+#Performs FastQC on all speicified files in a folder change line 2 as neccessary
+#bash fastqc.sh
+#make sure fastqc.sh is inside folder with files of interest
+#change the output folder as necessary (After the -o flag)
+
+module load fastqc
+for filename in *paired.fastq
+do
+fastqc -t 2 -o ./fastqcoutput/ $filename
+done
+#scp to desktop for analysis
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11-26-18
+Creating a haploid reference genome:
+
+#Converts GTF annotations from CGD into Haploid (Removes B Chromosomes)
+#Input file must be in same folder as script
+#Usage: bash convert_annotations.sh
+#Move .txt files to a temp folder or remove when done
+
+
+sed '/Ca22chr1B_C_albicans_SC5314/d' Annotations_Diploid_C_albicans_SC5314_version_A22-s07-m01-r71.gtf.txt > 1.txt
+sed '/Ca22chr2B_C_albicans_SC5314/d' 1.txt > 2.txt
+sed '/Ca22chr3B_C_albicans_SC5314/d' 2.txt > 3.txt
+sed '/Ca22chr4B_C_albicans_SC5314/d' 3.txt > 4.txt
+sed '/Ca22chr5B_C_albicans_SC5314/d' 4.txt > 5.txt
+sed '/Ca22chr6B_C_albicans_SC5314/d' 5.txt > 6.txt
+sed '/Ca22chr7B_C_albicans_SC5314/d' 6.txt > 7.txt
+sed '/Ca22chrRB_C_albicans_SC5314/d' 7.txt > Annotations_Haploid_A22-s07-m01-r71.gtf
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11-26-18
+Creating haploid reference annotations:
+
+#Converts Diploid Reference to Haploid Reference, change input and output names as necessary
+#Usage: bash convert_reference.sh
+#Diploid reference must be in same directory as script
+
+csplit -s -z Reference_Diploid_C_albicans_SC5314_version_A22-s07-m01-r71.fasta '/>/' '{*}'
+rm xx01
+rm xx03
+rm xx05
+rm xx07
+rm xx09
+rm xx11
+rm xx13
+rm xx16
+cat xx* > Haploid_Genome_A22-s07-m01-r71.fasta
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11-26-18
+
+Mapping with Star (2.5.3a)
+
+Indexing Genome:
+
+STAR --runMode genomeGenerate      --genomeDir ./genomeDir --genomeFastaFiles ../../genome/C_albicans_SC5314_version_A22-s07-m01-r71/Haploid_A22_s07-m01-r71/Haploid_Genome_A22-s07-m01-r71.fasta --runThreadN 1   --sjdbGTFfile ../../genome/C_albicans_SC5314_version_A22-s07-m01-r71/Haploid_A22_s07-m01-r71/Annotations_Haploid_A22-s07-m01-r71.gtf --sjdbGTFfeatureExon CDS --sjdbOverhang 149
+
+Mapping with star script (can qsub script but found this can be done quickly with an interactive session):
+
+# Runs star alignment on all files with R1.trimmed.paired.fastq and its cognate R2.trimmed.paired.fastq file
+# All runs are submitted to run at the same time
+# Genome must be indexed first
+#
+#       STAR --runMode genomeGenerate      --genomeDir ./genomeDir --genomeFastaFiles ../../genome/C_albicans_SC5314_version_A22-s07-m01-r71/Haploid_A22_s07-m01-r71/Haploid_Genome_A22-s07-m01-r71.fasta --runThreadN 1   --sjdbGTFfile ../../genome/C_albicans_SC5314_version_A22-s07-m01-r71/Haploid_A22_s07-m01-r71/Annotations_Haploid_A22-s07-m01-r71.gtf --sjdbGTFfeatureExon CDS --sjdbOverhang 149
+#
+# get rid of the # in front of cd O_workdir if submitting to qsub
+#
+#PBS -A ACF-UTK0011
+#PBS -l nodes=1,walltime=6:00:00
+
+#cd $PBS_O_WORKDIR
+
+module load star
+
+for R1 in ../3_trim_output/Sliding_window_4_15/*R1.trimmed.paired.fastq
+do
+        R2=`sed 's/R1.trimmed.paired.fastq/R2.trimmed.paired.fastq/' <(echo $R1)`
+        BASE=$( basename $R1 | sed 's/.R1.trimmed.paired.fastq//g')
+        echo "R1 $R1"
+        echo "R2 $R2"
+        echo "$BASE"
+
+STAR --genomeDir genomeDir --readFilesIn $R1 $R2 --outFileNamePrefix alignment_output/$BASE. --outSAMtype BAM SortedByCoordinate --runThreadN 1 &
+
+
+done
+
+wait
+
+[rtams@acf-login2 4_star]$ bash alignmentstar.qsh
+R1 ../3_trim_output/Sliding_window_4_15/104a_R1.trimmed.paired.fastq
+R2 ../3_trim_output/Sliding_window_4_15/104a_R2.trimmed.paired.fastq
+104a
+R1 ../3_trim_output/Sliding_window_4_15/104b_R1.trimmed.paired.fastq
+R2 ../3_trim_output/Sliding_window_4_15/104b_R2.trimmed.paired.fastq
+104b
+R1 ../3_trim_output/Sliding_window_4_15/57a_R1.trimmed.paired.fastq
+R2 ../3_trim_output/Sliding_window_4_15/57a_R2.trimmed.paired.fastq
+57a
+R1 ../3_trim_output/Sliding_window_4_15/57b_R1.trimmed.paired.fastq
+R2 ../3_trim_output/Sliding_window_4_15/57b_R2.trimmed.paired.fastq
+57b
+R1 ../3_trim_output/Sliding_window_4_15/62a_R1.trimmed.paired.fastq
+R2 ../3_trim_output/Sliding_window_4_15/62a_R2.trimmed.paired.fastq
+62a
+R1 ../3_trim_output/Sliding_window_4_15/62b_R1.trimmed.paired.fastq
+R2 ../3_trim_output/Sliding_window_4_15/62b_R2.trimmed.paired.fastq
+62b
+R1 ../3_trim_output/Sliding_window_4_15/88a_R1.trimmed.paired.fastq
+R2 ../3_trim_output/Sliding_window_4_15/88a_R2.trimmed.paired.fastq
+88a
+R1 ../3_trim_output/Sliding_window_4_15/88b_R1.trimmed.paired.fastq
+R2 ../3_trim_output/Sliding_window_4_15/88b_R2.trimmed.paired.fastq
+88b
+Nov 26 12:09:23 ..... started STAR run
+Nov 26 12:09:23 ..... loading genome
+Nov 26 12:09:23 ..... started STAR run
+Nov 26 12:09:23 ..... loading genome
+Nov 26 12:09:23 ..... started STAR run
+Nov 26 12:09:23 ..... loading genome
+Nov 26 12:09:23 ..... started STAR run
+Nov 26 12:09:23 ..... loading genome
+Nov 26 12:09:23 ..... started STAR run
+Nov 26 12:09:23 ..... loading genome
+Nov 26 12:09:23 ..... started STAR run
+Nov 26 12:09:23 ..... loading genome
+Nov 26 12:09:23 ..... started STAR run
+Nov 26 12:09:23 ..... loading genome
+Nov 26 12:09:23 ..... started STAR run
+Nov 26 12:09:23 ..... loading genome
+Nov 26 12:10:06 ..... started mapping
+Nov 26 12:10:06 ..... started mapping
+Nov 26 12:10:06 ..... started mapping
+Nov 26 12:10:06 ..... started mapping
+Nov 26 12:10:06 ..... started mapping
+Nov 26 12:10:06 ..... started mapping
+Nov 26 12:10:07 ..... started mapping
+Nov 26 12:10:07 ..... started mapping
+Nov 26 12:13:57 ..... started sorting BAM
+Nov 26 12:14:15 ..... finished successfully
+Nov 26 12:15:05 ..... started sorting BAM
+Nov 26 12:15:31 ..... finished successfully
+Nov 26 12:16:04 ..... started sorting BAM
+Nov 26 12:16:17 ..... started sorting BAM
+Nov 26 12:16:40 ..... started sorting BAM
+Nov 26 12:16:59 ..... started sorting BAM
+Nov 26 12:17:07 ..... started sorting BAM
+Nov 26 12:17:16 ..... finished successfully
+Nov 26 12:17:27 ..... started sorting BAM
+Nov 26 12:18:12 ..... finished successfully
+Nov 26 12:19:22 ..... finished successfully
+Nov 26 12:19:41 ..... finished successfully
+Nov 26 12:20:13 ..... finished successfully
+Nov 26 12:20:26 ..... finished successfully
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11-26-18
+
+htseq (0.10.0) analysis (can qsub script but found this can be done quickly with an interactive session):
+
+
+#Gets counts for all reads
+#Use qsub -m eba -M rtams@utk.edu get_counts.qsh
+
+#PBS -A ACF-UTK0085
+#PBS -l nodes=1,walltime=1:00:00
+
+#cd $PBS_O_WORKDIR
+
+module load htseq
+
+for filename in `ls ../4_star/alignment_output/*.bam`
+
+do
+        BASE=$(basename $filename | sed 's/*.Aligned//g')
+        echo $BASE
+
+htseq-count --format=bam \
+--order=pos \
+--stranded=no \
+--type=CDS \
+--idattr=gene_id \
+$filename \
+../../genome/C_albicans_SC5314_version_A22-s07-m01-r71/Haploid_A22_s07-m01-r71/Annotations_Haploid_A22-s07-m01-r71.gtf \
+> $BASE.counts.txt &
+
+done
+
+
+[rtams@acf-bc008 5_htseq]$ bash get_counts.qsh
+104a.Aligned.sortedByCoord.out.bam
+104b.Aligned.sortedByCoord.out.bam
+57a.Aligned.sortedByCoord.out.bam
+57b.Aligned.sortedByCoord.out.bam
+62a.Aligned.sortedByCoord.out.bam
+62b.Aligned.sortedByCoord.out.bam
+88a.Aligned.sortedByCoord.out.bam
+88b.Aligned.sortedByCoord.out.bam
+[rtams@acf-bc008 5_htseq]$ 19057 GFF lines processed.
+19057 GFF lines processed.
+19057 GFF lines processed.
+19057 GFF lines processed.
+19057 GFF lines processed.
+19057 GFF lines processed.
+19057 GFF lines processed.
+19057 GFF lines processed.
+100000 SAM alignment record pairs processed.
+100000 SAM alignment record pairs processed.
+100000 SAM alignment record pairs processed.
+100000 SAM alignment record pairs processed.
+100000 SAM alignment record pairs processed.
+100000 SAM alignment record pairs processed.
+100000 SAM alignment record pairs processed.
+100000 SAM alignment record pairs processed.
+200000 SAM alignment record pairs processed.
+200000 SAM alignment record pairs processed.
+200000 SAM alignment record pairs processed.
+200000 SAM alignment record pairs processed.
+200000 SAM alignment record pairs processed.
+200000 SAM alignment record pairs processed.
+200000 SAM alignment record pairs processed.
+200000 SAM alignment record pairs processed.
+300000 SAM alignment record pairs processed.
+300000 SAM alignment record pairs processed.
+300000 SAM alignment record pairs processed.
+300000 SAM alignment record pairs processed.
+300000 SAM alignment record pairs processed.
+300000 SAM alignment record pairs processed.
+300000 SAM alignment record pairs processed.
+300000 SAM alignment record pairs processed.
+400000 SAM alignment record pairs processed.
+400000 SAM alignment record pairs processed.
+400000 SAM alignment record pairs processed.
+400000 SAM alignment record pairs processed.
+400000 SAM alignment record pairs processed.
+400000 SAM alignment record pairs processed.
+400000 SAM alignment record pairs processed.
+400000 SAM alignment record pairs processed.
+500000 SAM alignment record pairs processed.
+500000 SAM alignment record pairs processed.
+500000 SAM alignment record pairs processed.
+500000 SAM alignment record pairs processed.
+500000 SAM alignment record pairs processed.
+500000 SAM alignment record pairs processed.
+500000 SAM alignment record pairs processed.
+500000 SAM alignment record pairs processed.
+600000 SAM alignment record pairs processed.
+600000 SAM alignment record pairs processed.
+600000 SAM alignment record pairs processed.
+600000 SAM alignment record pairs processed.
+600000 SAM alignment record pairs processed.
+600000 SAM alignment record pairs processed.
+600000 SAM alignment record pairs processed.
+600000 SAM alignment record pairs processed.
+700000 SAM alignment record pairs processed.
+700000 SAM alignment record pairs processed.
+700000 SAM alignment record pairs processed.
+700000 SAM alignment record pairs processed.
+700000 SAM alignment record pairs processed.
+700000 SAM alignment record pairs processed.
+700000 SAM alignment record pairs processed.
+700000 SAM alignment record pairs processed.
+800000 SAM alignment record pairs processed.
+800000 SAM alignment record pairs processed.
+800000 SAM alignment record pairs processed.
+800000 SAM alignment record pairs processed.
+800000 SAM alignment record pairs processed.
+800000 SAM alignment record pairs processed.
+800000 SAM alignment record pairs processed.
+800000 SAM alignment record pairs processed.
+900000 SAM alignment record pairs processed.
+900000 SAM alignment record pairs processed.
+900000 SAM alignment record pairs processed.
+900000 SAM alignment record pairs processed.
+900000 SAM alignment record pairs processed.
+900000 SAM alignment record pairs processed.
+900000 SAM alignment record pairs processed.
+900000 SAM alignment record pairs processed.
+1000000 SAM alignment record pairs processed.
+1000000 SAM alignment record pairs processed.
+1000000 SAM alignment record pairs processed.
+1000000 SAM alignment record pairs processed.
+1000000 SAM alignment record pairs processed.
+1000000 SAM alignment record pairs processed.
+1000000 SAM alignment record pairs processed.
+1000000 SAM alignment record pairs processed.
+1100000 SAM alignment record pairs processed.
+1100000 SAM alignment record pairs processed.
+1100000 SAM alignment record pairs processed.
+1100000 SAM alignment record pairs processed.
+1100000 SAM alignment record pairs processed.
+1100000 SAM alignment record pairs processed.
+1100000 SAM alignment record pairs processed.
+1100000 SAM alignment record pairs processed.
+1200000 SAM alignment record pairs processed.
+1200000 SAM alignment record pairs processed.
+1200000 SAM alignment record pairs processed.
+1200000 SAM alignment record pairs processed.
+1200000 SAM alignment record pairs processed.
+1200000 SAM alignment record pairs processed.
+1200000 SAM alignment record pairs processed.
+1200000 SAM alignment record pairs processed.
+1300000 SAM alignment record pairs processed.
+1300000 SAM alignment record pairs processed.
+1300000 SAM alignment record pairs processed.
+1300000 SAM alignment record pairs processed.
+1300000 SAM alignment record pairs processed.
+1300000 SAM alignment record pairs processed.
+1300000 SAM alignment record pairs processed.
+1300000 SAM alignment record pairs processed.
+1400000 SAM alignment record pairs processed.
+1400000 SAM alignment record pairs processed.
+1400000 SAM alignment record pairs processed.
+1400000 SAM alignment record pairs processed.
+1400000 SAM alignment record pairs processed.
+1400000 SAM alignment record pairs processed.
+1400000 SAM alignment record pairs processed.
+1400000 SAM alignment record pairs processed.
+Warning: Mate records missing for 4597 records; first such record: <SAM_Alignment object: Paired-end read 'M04398:73:000000000-BK6BH:1:1109:19521:12817' aligned to Ca22chr2A_C_albicans_SC5314:[505874,506024)/->.
+Warning: Mate pairing was ambiguous for 3051 records; mate key for first such record: ('M04398:73:000000000-BK6BH:1:1106:12666:7197', 'first', 'Ca22chr1A_C_albicans_SC5314', 943, 'Ca22chr1A_C_albicans_SC5314', 1001, 199).
+1464917 SAM alignment pairs processed.
+1500000 SAM alignment record pairs processed.
+1500000 SAM alignment record pairs processed.
+1500000 SAM alignment record pairs processed.
+1500000 SAM alignment record pairs processed.
+1500000 SAM alignment record pairs processed.
+1500000 SAM alignment record pairs processed.
+1500000 SAM alignment record pairs processed.
+1600000 SAM alignment record pairs processed.
+1600000 SAM alignment record pairs processed.
+1600000 SAM alignment record pairs processed.
+1600000 SAM alignment record pairs processed.
+1600000 SAM alignment record pairs processed.
+1600000 SAM alignment record pairs processed.
+1600000 SAM alignment record pairs processed.
+Warning: Mate records missing for 7058 records; first such record: <SAM_Alignment object: Paired-end read 'M04398:73:000000000-BK6BH:1:2102:8476:6658' aligned to Ca22chr2A_C_albicans_SC5314:[1655012,1655163)/+>.
+Warning: Mate pairing was ambiguous for 2845 records; mate key for first such record: ('M04398:73:000000000-BK6BH:1:2102:9775:7777', 'first', 'Ca22chr1A_C_albicans_SC5314', 8361, 'Ca22chr1A_C_albicans_SC5314', 8421, 103678).
+1669204 SAM alignment pairs processed.
+1700000 SAM alignment record pairs processed.
+1700000 SAM alignment record pairs processed.
+1700000 SAM alignment record pairs processed.
+1700000 SAM alignment record pairs processed.
+1700000 SAM alignment record pairs processed.
+1700000 SAM alignment record pairs processed.
+1800000 SAM alignment record pairs processed.
+1800000 SAM alignment record pairs processed.
+1800000 SAM alignment record pairs processed.
+1800000 SAM alignment record pairs processed.
+1800000 SAM alignment record pairs processed.
+1800000 SAM alignment record pairs processed.
+1900000 SAM alignment record pairs processed.
+1900000 SAM alignment record pairs processed.
+1900000 SAM alignment record pairs processed.
+1900000 SAM alignment record pairs processed.
+1900000 SAM alignment record pairs processed.
+1900000 SAM alignment record pairs processed.
+2000000 SAM alignment record pairs processed.
+2000000 SAM alignment record pairs processed.
+2000000 SAM alignment record pairs processed.
+2000000 SAM alignment record pairs processed.
+2000000 SAM alignment record pairs processed.
+2000000 SAM alignment record pairs processed.
+2100000 SAM alignment record pairs processed.
+2100000 SAM alignment record pairs processed.
+2100000 SAM alignment record pairs processed.
+2100000 SAM alignment record pairs processed.
+2100000 SAM alignment record pairs processed.
+2100000 SAM alignment record pairs processed.
+2200000 SAM alignment record pairs processed.
+2200000 SAM alignment record pairs processed.
+2200000 SAM alignment record pairs processed.
+2200000 SAM alignment record pairs processed.
+2200000 SAM alignment record pairs processed.
+2200000 SAM alignment record pairs processed.
+Warning: Mate records missing for 7050 records; first such record: <SAM_Alignment object: Paired-end read 'M04398:73:000000000-BK6BH:1:2109:12950:25884' aligned to Ca22chrRA_C_albicans_SC5314:[1548966,1549110)/->.
+Warning: Mate pairing was ambiguous for 4582 records; mate key for first such record: ('M04398:73:000000000-BK6BH:1:2105:21516:13423', 'second', 'Ca22chr1A_C_albicans_SC5314', 24993, 'Ca22chr1A_C_albicans_SC5314', 25008, 165).
+2264843 SAM alignment pairs processed.
+Warning: Mate records missing for 8825 records; first such record: <SAM_Alignment object: Paired-end read 'M04398:73:000000000-BK6BH:1:1112:8500:14333' aligned to Ca22chr2A_C_albicans_SC5314:[1634494,1634645)/+>.
+Warning: Mate pairing was ambiguous for 4008 records; mate key for first such record: ('M04398:73:000000000-BK6BH:1:2106:28671:15066', 'second', 'Ca22chr1A_C_albicans_SC5314', 32317, 'Ca22chr1A_C_albicans_SC5314', 32326, 159).
+2294523 SAM alignment pairs processed.
+2300000 SAM alignment record pairs processed.
+2300000 SAM alignment record pairs processed.
+2300000 SAM alignment record pairs processed.
+2300000 SAM alignment record pairs processed.
+Warning: Mate records missing for 8155 records; first such record: <SAM_Alignment object: Paired-end read 'M04398:73:000000000-BK6BH:1:1113:19550:27912' aligned to Ca22chrRA_C_albicans_SC5314:[1968778,1968894)/+>.
+Warning: Mate pairing was ambiguous for 4355 records; mate key for first such record: ('M04398:73:000000000-BK6BH:1:1103:22203:16272', 'first', 'Ca22chr1A_C_albicans_SC5314', 882, 'Ca22chr1A_C_albicans_SC5314', 963, 180).
+2318088 SAM alignment pairs processed.
+Warning: Mate records missing for 29220 records; first such record: <SAM_Alignment object: Paired-end read 'M04398:73:000000000-BK6BH:1:1105:6857:15363' aligned to Ca22chr4A_C_albicans_SC5314:[353622,353773)/->.
+2400000 SAM alignment record pairs processed.
+Warning: Mate pairing was ambiguous for 4812 records; mate key for first such record: ('M04398:73:000000000-BK6BH:1:2112:5767:18620', 'first', 'Ca22chr1A_C_albicans_SC5314', 956, 'Ca22chr1A_C_albicans_SC5314', 967, 157).
+2394190 SAM alignment pairs processed.
+2400000 SAM alignment record pairs processed.
+2500000 SAM alignment record pairs processed.
+2500000 SAM alignment record pairs processed.
+2600000 SAM alignment record pairs processed.
+2600000 SAM alignment record pairs processed.
+Warning: Mate records missing for 8712 records; first such record: <SAM_Alignment object: Paired-end read 'M04398:73:000000000-BK6BH:1:2104:3362:19505' aligned to Ca22chr1A_C_albicans_SC5314:[99736,99886)/->.
+Warning: Mate pairing was ambiguous for 4695 records; mate key for first such record: ('M04398:73:000000000-BK6BH:1:1103:23438:9183', 'first', 'Ca22chr1A_C_albicans_SC5314', 2954, 'Ca22chr1A_C_albicans_SC5314', 3008, 137).
+2666085 SAM alignment pairs processed.
+2700000 SAM alignment record pairs processed.
+2800000 SAM alignment record pairs processed.
+2900000 SAM alignment record pairs processed.
+Warning: Mate records missing for 8165 records; first such record: <SAM_Alignment object: Paired-end read 'M04398:73:000000000-BK6BH:1:2104:12940:20882' aligned to Ca22chr3A_C_albicans_SC5314:[1776821,1776970)/->.
+Warning: Mate pairing was ambiguous for 4733 records; mate key for first such record: ('M04398:73:000000000-BK6BH:1:1111:23161:19292', 'first', 'Ca22chr1A_C_albicans_SC5314', 955, 'Ca22chr1A_C_albicans_SC5314', 956, 118).
+2997096 SAM alignment pairs processed.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+DESeq2 (1.18.1) and R (3.4.3) (11_26_18): Input commands (Some Output Omitted for Clarity)
+
+> setwd("C:/Users/Bob/Desktop/11_26_18/htseq/Counts")
+> list.files(path = ".")
+[1] "104a.Aligned.sortedByCoord.out.bam.counts.txt"
+[2] "104b.Aligned.sortedByCoord.out.bam.counts.txt"
+[3] "57a.Aligned.sortedByCoord.out.bam.counts.txt" 
+[4] "57b.Aligned.sortedByCoord.out.bam.counts.txt" 
+[5] "62a.Aligned.sortedByCoord.out.bam.counts.txt" 
+[6] "62b.Aligned.sortedByCoord.out.bam.counts.txt" 
+[7] "88a.Aligned.sortedByCoord.out.bam.counts.txt" 
+[8] "88b.Aligned.sortedByCoord.out.bam.counts.txt" 
+> fileName <- list.files(path = ".", pattern = "*.txt")
+> genotype <- factor(c("ept1KO", "ept1KO", "Wild Type", "Wild Type", "psd12", "psd12", "EPT1OE", "EPT1OE"))
+> genotype
+[1] ept1KO    ept1KO    Wild Type Wild Type psd12     psd12     EPT1OE   
+[8] EPT1OE   
+Levels: ept1KO EPT1OE psd12 Wild Type
+> sampleName <- sapply(strsplit(fileName, "[.]"), "[", 1)
+> sampleName
+[1] "104a" "104b" "57a"  "57b"  "62a"  "62b"  "88a"  "88b" 
+> genotype
+[1] ept1KO    ept1KO    Wild Type Wild Type psd12     psd12     EPT1OE    EPT1OE   
+Levels: ept1KO EPT1OE psd12 Wild Type
+> fileName
+[1] "104a.Aligned.sortedByCoord.out.bam.counts.txt"
+[2] "104b.Aligned.sortedByCoord.out.bam.counts.txt"
+[3] "57a.Aligned.sortedByCoord.out.bam.counts.txt" 
+[4] "57b.Aligned.sortedByCoord.out.bam.counts.txt" 
+[5] "62a.Aligned.sortedByCoord.out.bam.counts.txt" 
+[6] "62b.Aligned.sortedByCoord.out.bam.counts.txt" 
+[7] "88a.Aligned.sortedByCoord.out.bam.counts.txt" 
+[8] "88b.Aligned.sortedByCoord.out.bam.counts.txt" 
+> SampleTable <- data.frame(sampleName = sampleName, fileName = fileName, genotype = genotype)
+> SampleTable
+  sampleName                                      fileName  genotype
+1       104a 104a.Aligned.sortedByCoord.out.bam.counts.txt    ept1KO
+2       104b 104b.Aligned.sortedByCoord.out.bam.counts.txt    ept1KO
+3        57a  57a.Aligned.sortedByCoord.out.bam.counts.txt Wild Type
+4        57b  57b.Aligned.sortedByCoord.out.bam.counts.txt Wild Type
+5        62a  62a.Aligned.sortedByCoord.out.bam.counts.txt     psd12
+6        62b  62b.Aligned.sortedByCoord.out.bam.counts.txt     psd12
+7        88a  88a.Aligned.sortedByCoord.out.bam.counts.txt    EPT1OE
+8        88b  88b.Aligned.sortedByCoord.out.bam.counts.txt    EPT1OE
+> library("colorspace")
+> library("grid")
+> library("DESeq2")
+> dds$genotype <- relevel (dds$genotype, "Wild Type")
+> dim(dds)
+[1] 6213    8
+> dds = dds[rowSums(counts(dds))>1, ]
+> dim(dds)
+[1] 6052    8
+> dds <- DESeq(dds)
+> resOE <- results(dds, contrast=c("genotype", "EPT1OE", "Wild Type"))
+> resOrderedOE <- resOE[order(resOE$padj),]
+> sigOrderedresOE <- subset(resOrderedOE, padj < 0.05)
+> write.csv(as.data.frame(sigOrderedresOE), "EPT1OE_vs_WT.csv")
+> resKO <- results(dds, contrast=c("genotype", "ept1KO", "Wild Type"))
+> resOrderedKO <- resKO[order(resKO$padj),]
+> sigOrderedresKO <- subset(resOrderedKO, padj < 0.05)
+> write.csv(as.data.frame(sigOrderedresKO), "ept1KO_vs_WT.csv")
+> resPSD <- results(dds, contrast=c("genotype", "psd12", "Wild Type"))
+> resOrderedPSD <- resPSD[order(resPSD$padj),]
+> sigOrderedresPSD <- subset(resOrderedPSD, padj < 0.05)
+> write.csv(as.data.frame(sigOrderedresPSD), "psd12_vs_WT.csv")
+> savehistory("C:/Users/Bob/Desktop/11_26_18/htseq/Counts/final_analysis_11_26_18.Rhistory")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
